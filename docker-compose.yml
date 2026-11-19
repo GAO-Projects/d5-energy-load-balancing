@@ -1,0 +1,64 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: d5_postgres
+    environment:
+      POSTGRES_USER: d5_user
+      POSTGRES_PASSWORD: d5_password
+      POSTGRES_DB: d5_energy_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U d5_user -d d5_energy_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: d5_mosquitto
+    ports:
+      - "1883:1883"
+      - "61613:61613" # Default GAO 217030 port compatibility
+    volumes:
+      - ./mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+
+  backend:
+    build: ./backend
+    container_name: d5_backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mosquitto:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql+asyncpg://d5_user:d5_password@postgres:5432/d5_energy_db
+      MQTT_BROKER_HOST: mosquitto
+      MQTT_BROKER_PORT: 1883
+      MQTT_TOPIC: kbeacon/publish/#
+      HARDWARE_MODE: synthetic        # Switch to 'hardware' when GAO 217030 & USB ESP32 are attached
+      SERIAL_PORT: /dev/ttyACM0
+      SERIAL_BAUD: 115200
+      DEFAULT_BUDGET_WATTS: 8.0
+      DEMO_TRACK: physical_ai         # 'physical_ai' (closed-loop) or 'aiot' (passive monitoring)
+    ports:
+      - "8000:8000"
+    # Uncomment below when switching HARDWARE_MODE=hardware on Linux host:
+    # devices:
+    #   - "/dev/ttyACM0:/dev/ttyACM0"
+
+  frontend:
+    build: ./frontend
+    container_name: d5_frontend
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      NEXT_PUBLIC_WS_URL: ws://localhost:8000/ws/telemetry
+    ports:
+      - "3000:3000"
+
+volumes:
+  pg_data:

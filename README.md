@@ -6,7 +6,7 @@ The following diagram is the project's directory structure:
       -- = New File )
       
 d5-energy-load-balancing/
-|-- docker-compose.yml
+\n docker-compose.yml
 |- mosquitto/
 | |- config/
 │       -- mosquitto.conf

@@ -7,7 +7,7 @@ The D5: Energy Load Balancing project is a priority encoding system that operate
 
 - Priority 2 (Ch 2 Flexible Fan): Preserved ahead of decorative lighting; excludes unstable <25% duties.
 
-- - Priority 3 (Ch 3 LED Strip): Dimmed or shed first to stay within budget.
+- Priority 3 (Ch 3 LED Strip): Dimmed or shed first to stay within budget.
 
 When set up physically, this project uses:
 

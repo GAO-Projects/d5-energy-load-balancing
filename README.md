@@ -2,12 +2,14 @@
 Welcome to the Physical AI Implementation of the D5: Energy Load Balancing project. 
 
 The following diagram is the project's directory structure: 
-
+(Key: |- = New Folder
+      -- = New File )
+      
 d5-energy-load-balancing/
-├── docker-compose.yml
-├── mosquitto/
-│   └── config/
-│       └── mosquitto.conf
+|-- docker-compose.yml
+|- mosquitto/
+| |- config/
+│       -- mosquitto.conf
 ├── backend/
 │   ├── Dockerfile
 │   ├── requirements.txt

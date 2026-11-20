@@ -1,20 +1,19 @@
-# D5: Energy Load Balancing
+## D5: Energy Load Balancing
 Welcome to the Physical AI Implementation of the D5: Energy Load Balancing project. 
 
 The following diagram is the project's directory structure: 
-(Key: |- = New Folder
-      -- = New File )
-      
+
+```text
 d5-energy-load-balancing/
-\n docker-compose.yml
-|- mosquitto/
-| |- config/
-│       -- mosquitto.conf
+├── docker-compose.yml               
+├── mosquitto/
+│   └── config/
+│       └── mosquitto.conf          
 ├── backend/
 │   ├── Dockerfile
 │   ├── requirements.txt
 │   └── app/
-│       ├── main.py                 
+│       ├── main.py                  
 │       ├── config.py                
 │       ├── database.py              
 │       ├── models.py               
@@ -22,7 +21,7 @@ d5-energy-load-balancing/
 │       │   ├── base.py              
 │       │   ├── gao_gateway.py       
 │       │   ├── serial_controller.py 
-│       │   └── synthetic.py         
+│       │   └── synthetic.py
 │       └── ai/
 │           ├── forecaster.py        
 │           └── optimizer.py         
@@ -36,7 +35,7 @@ d5-energy-load-balancing/
             ├── layout.tsx
             ├── globals.css
             └── page.tsx             
-            
+```
 Using python for the backend along with JavaScript, TypeScript, and CSS for the front end, this program accurately simulates the D5 project's priority encoding system. 
 
 If you have any questions regarding the project or development of this project, please feel free to reach out to me via Teams or E-Mail.
@@ -44,4 +43,4 @@ If you have any questions regarding the project or development of this project, 
 University E-Mail: aanwar08@uoguelph.ca
 Personal E-Mail: alvinaianwar@gmail.com
 
-*This project was implemented by Alvina Anwar.
+#This project was implemented by Alvina Anwar.

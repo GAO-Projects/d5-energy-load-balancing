@@ -11,18 +11,30 @@ The D5: Energy Load Balancing project is a priority encoding system that operate
 
 When set up physically, this project uses:
 
-GAO's 217030 BLE Gateway
-3 BLE power measurement nodes
-2 guarded cooling fans (DC 12V, PWM compatible)
-1 dimmable LED strip (DC 12V)
-3 PWM switching channels (4-ch MOSFET driver board, use 3 channels)
-1 local station controller
-1 operator load switch
-DC power supply (12V, 5A, 60W adapter)
-Customized 0.85m x 0.55m panel base
-1 host PC (to run this program on)
-1 ethernet router
-Any multimeter for testing
+- GAO's 217030 BLE Gateway
+  
+- 3 BLE power measurement nodes
+  
+- 2 guarded cooling fans (DC 12V, PWM compatible)
+  
+- 1 dimmable LED strip (DC 12V)
+  
+- 3 PWM switching channels (4-ch MOSFET driver board, use 3 channels)
+  
+- 1 local station controller
+  
+- 1 operator load switch
+  
+- DC power supply (12V, 5A, 60W adapter)
+  
+- Customized 0.85m x 0.55m panel base
+  
+- 1 host PC (to run this program on)
+  
+- 1 ethernet router
+  
+- Any multimeter for testing
+  
 The following diagram is the project's directory structure:
 
 ```text
